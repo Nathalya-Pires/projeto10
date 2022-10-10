@@ -51,3 +51,4 @@ table {
 }
 
 `
+export default GlobalStyle
