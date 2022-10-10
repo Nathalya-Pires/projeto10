@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import styled from "styled-components";
 import Movie from './Movie';
-
+import { Link } from "react-router-dom"
 
 export default function Movies() {
     const [listMovies, setListMovies] = useState([]);
-    console.log(listMovies);
+    
+
     useEffect(() => {
-        const linkUrl = "https://mock-api.driven.com.br/api/v5/cineflex/movies";
-        const promise = axios.get(linkUrl);
+        const linkURL = "https://mock-api.driven.com.br/api/v5/cineflex/movies";
+        const promise = axios.get(linkURL);
 
         promise.then((resposta) => {
             setListMovies(resposta.data);
@@ -17,13 +18,15 @@ export default function Movies() {
 
     }, [])
 
+    console.log(listMovies);
+    
     return (
         <>
             <SelectMovie>
             <p>Selecione o filme</p>
             </SelectMovie>
             <ContainerMovies>
-                {listMovies.map((lm) => <Movie key={lm.id} listMovies={lm} />)}
+                {listMovies.map((lm) => <Link to={`/movies/${lm.id}`} key={lm.id}> <Movie listMovies={lm} /> </Link>)}
             </ContainerMovies>
 
         </>

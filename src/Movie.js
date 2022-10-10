@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export default function Movie({listMovies}) {
-    console.log(listMovies)
+    // console.log(listMovies)
     return(
 
         <ContainerImg>
